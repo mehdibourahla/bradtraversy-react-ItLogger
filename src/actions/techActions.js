@@ -44,7 +44,7 @@ export const addTech = tech => async dispatch => {
   } catch (error) {
     dispatch({
       type: TECHS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
@@ -52,7 +52,7 @@ export const addTech = tech => async dispatch => {
 export const deleteTech = id => async dispatch => {
   try {
     setLoading();
-    const res = await fetch(`/techs/${id}`, {
+    await fetch(`/techs/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export const deleteTech = id => async dispatch => {
   } catch (error) {
     dispatch({
       type: TECHS_ERROR,
-      payload: error.response.data,
+      payload: error.response.statusText,
     });
   }
 };
