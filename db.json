@@ -6,6 +6,13 @@
       "attention": true,
       "tech": "John Doe",
       "date": "2021-01-06T16:25:34.773Z"
+    },
+    {
+      "message": "Add new Technician",
+      "attention": true,
+      "tech": "Mohamed BOURAHLA",
+      "date": "2021-01-07T10:18:33.556Z",
+      "id": 2
     }
   ],
   "techs": [
@@ -23,6 +30,16 @@
       "id": 3,
       "firstName": "Sara",
       "lastName": "Wilson"
+    },
+    {
+      "firstName": "Mohamed",
+      "lastName": "BOURAHLA",
+      "id": 4
+    },
+    {
+      "firstName": "Super",
+      "lastName": "Mario",
+      "id": 5
     }
   ]
 }

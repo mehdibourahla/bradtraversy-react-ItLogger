@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { addLog } from "../../actions/logActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const AddLogsModal = ({ addLog }) => {
+const AddLogsModal = ({ techList: { techs }, addLog }) => {
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState("");
@@ -28,6 +28,17 @@ const AddLogsModal = ({ addLog }) => {
       setAttention(false);
     }
   };
+
+  const optionList = [];
+  if (techs !== null) {
+    techs.forEach(tech => {
+      optionList.push(
+        <option key={tech.id} value={tech.firstName + " " + tech.lastName}>
+          {tech.firstName + " " + tech.lastName}
+        </option>
+      );
+    });
+  }
 
   return (
     <div className='modal' id='add-log-modal' style={modalStyle}>
@@ -57,9 +68,7 @@ const AddLogsModal = ({ addLog }) => {
               <option value='' disabled>
                 Select Technician
               </option>
-              <option value='John Doe'>John Doe</option>
-              <option value='Sam Smith'>Sam Smith</option>
-              <option value='Sara Wilson'>Sara Wilson</option>
+              {optionList}
             </select>
           </div>
         </div>
@@ -95,11 +104,16 @@ const AddLogsModal = ({ addLog }) => {
 
 AddLogsModal.propTypes = {
   addLog: PropTypes.func.isRequired,
+  techList: PropTypes.object.isRequired,
 };
+
+const StateToProps = state => ({
+  techList: state.tech,
+});
 
 const modalStyle = {
   width: "75%",
   height: "75%",
 };
 
-export default connect(null, { addLog })(AddLogsModal);
+export default connect(StateToProps, { addLog })(AddLogsModal);
