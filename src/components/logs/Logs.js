@@ -12,6 +12,7 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
   }, []);
 
   if (loading || logs === null) {
+    console.log("OHOH");
     return <Preloader />;
   }
 
