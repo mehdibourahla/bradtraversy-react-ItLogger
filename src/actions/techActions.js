@@ -48,6 +48,27 @@ export const addTech = tech => async dispatch => {
     });
   }
 };
+// ADD NEW TECH
+export const deleteTech = id => async dispatch => {
+  try {
+    setLoading();
+    const res = await fetch(`/techs/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    dispatch({
+      type: DELETE_TECH,
+      payload: id,
+    });
+  } catch (error) {
+    dispatch({
+      type: TECHS_ERROR,
+      payload: error.response.data,
+    });
+  }
+};
 
 // SET LOADING TRUE
 export const setLoading = () => {
